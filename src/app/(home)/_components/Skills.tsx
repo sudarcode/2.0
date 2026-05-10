@@ -1,3 +1,5 @@
+"use client";
+
 import { Variants } from "framer-motion";
 import { MotionDiv } from "@/components/Framer";
 import Section from "@/components/Section";

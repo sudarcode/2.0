@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
@@ -10,10 +10,9 @@ import { SITE_CONTENT } from "@/lib/constants";
 const Skills = dynamic(() => import("@/app/(home)/_components/Skills"));
 const Experience = dynamic(() => import("@/app/(home)/_components/Experience"));
 const Education = dynamic(() => import("@/app/(home)/_components/Education"));
-const Projects = dynamic(() => import("@/app/(home)/_components/Projects").then((m) => m.Projects));
-// const Testimonials = dynamic(() =>
-//   import("@/app/(home)/_components/Testmonials").then((m) => m.Testimonials),
-// );
+const Projects = dynamic(() =>
+  import("@/app/(home)/_components/Projects").then((m) => m.Projects),
+);
 
 export default function Home() {
   const sanitizedSkills = Object.fromEntries(
@@ -27,20 +26,19 @@ export default function Home() {
 
   return (
     <AnimatePresence mode="wait">
-        <MotionMain
-          key="content"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: [0.42, 0, 0.58, 1] }}
-        >
-          <Hero {...SITE_CONTENT.hero} />
-          <Skills skills={sanitizedSkills} />
-          <Experience experiences={SITE_CONTENT.experience} />
-          <Education education={SITE_CONTENT.education} />
-          <Projects projects={SITE_CONTENT.projects} />
-          {/* <Testimonials /> */}
-          <Footer />
-        </MotionMain>
+      <MotionMain
+        key="content"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: [0.42, 0, 0.58, 1] }}
+      >
+        <Hero {...SITE_CONTENT.hero} />
+        <Skills skills={sanitizedSkills} />
+        <Experience experiences={SITE_CONTENT.experience} />
+        <Education education={SITE_CONTENT.education} />
+        <Projects projects={SITE_CONTENT.projects} />
+        <Footer />
+      </MotionMain>
     </AnimatePresence>
   );
 }

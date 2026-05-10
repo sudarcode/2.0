@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
@@ -65,6 +66,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://images.weserv.nl" />
+        <link rel="dns-prefetch" href="https://images.weserv.nl" />
+      </head>
       <body
         className={`${nougat.variable} ${payback.variable} ${leaguespartan.variable} font-leaguespartan antialiased bg-background text-foreground`}
       >
@@ -74,6 +79,7 @@ export default function RootLayout({
           {children}
         </main>
         <Loader />
+        <Analytics />
       </body>
     </html>
   );

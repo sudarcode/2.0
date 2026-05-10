@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { MotionDiv, MotionH1, MotionP, MotionSpan } from "@/components/Framer";
@@ -12,30 +12,20 @@ export default function Hero({ name, image, summary, currentWork, stats }: HeroP
       <div className="flex-1 grid grid-cols-1 md:grid-cols-12 relative z-10 h-full">
         <div className="md:col-span-8 flex flex-col overflow-hidden">
           <div className="p-6 md:p-8 flex justify-between items-center">
-            <MotionDiv
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, ease: "circOut" }}
-              className="flex items-center gap-3"
-            >
+            <div className="flex items-center gap-3">
               <div className="flex flex-col">
                 <span className="text-[10px] uppercase tracking-[0.2em] text-secondary/60">
                   Currently working as
                 </span>
                 <span className="text-xs font-bold tracking-tight text-primary">{currentWork}</span>
               </div>
-            </MotionDiv>
-            <MotionDiv
-              initial={{ opacity: 0, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 0.1, ease: "circOut" }}
-              className="flex flex-col text-right"
-            >
+            </div>
+            <div className="flex flex-col text-right">
               <span className="text-[10px] uppercase tracking-[0.2em] text-secondary/60">
                 From Kottayam, Kerala
               </span>
               <Clock timezone="Asia/Kolkata" />
-            </MotionDiv>
+            </div>
           </div>
           <div className="flex-1 flex flex-col justify-center px-8 md:px-16 py-12">
             <div className="relative">
@@ -103,8 +93,9 @@ export default function Hero({ name, image, summary, currentWork, stats }: HeroP
               alt={name}
               fill
               fetchPriority="high"
-              className="object-cover object-top scale-105 group-hover:scale-100 transition-transform duration-1000"
               priority
+              className="object-cover object-top scale-105 group-hover:scale-100 transition-transform duration-1000"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </MotionDiv>
         </div>

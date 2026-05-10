@@ -1,3 +1,5 @@
+"use client";
+
 import { Variants } from "framer-motion";
 import { ChevronsDownUpIcon, ChevronsUpDownIcon } from "lucide-react";
 import Image from "next/image";
