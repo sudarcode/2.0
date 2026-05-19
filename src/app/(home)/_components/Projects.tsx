@@ -134,6 +134,7 @@ export function Projects({ projects }: Props) {
                     src={activeProject.image}
                     alt={activeProject.name}
                     fill
+                    sizes="(max-width: 767px) 100vw, 50vw"
                     className="object-cover"
                     priority
                   />
@@ -276,11 +277,12 @@ export function Projects({ projects }: Props) {
             {projects.map((project, index) => {
               if (!project.image) return null;
               return (
-                <Image
+               <Image
                   key={project.name}
                   src={project.image}
                   alt={project.name}
                   fill
+                  sizes="(max-width: 767px) 100vw, 50vw"
                   className="absolute inset-0 object-cover transition-all duration-500 ease-out"
                   style={{
                     opacity: hoveredIndex === index ? 1 : 0,
