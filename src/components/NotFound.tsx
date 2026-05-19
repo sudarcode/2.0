@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-export function Illustration(props: React.ComponentPropsWithoutRef<"svg">) {
+function Illustration(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 362 145" {...props}>
       <path
