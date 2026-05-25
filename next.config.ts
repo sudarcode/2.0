@@ -17,14 +17,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  experimental: {
-    optimizePackageImports: [
-      "framer-motion",
-      "lucide-react",
-      "react-icons",
-      "@radix-ui/react-*",
-    ],
-  },
 };
 
 export default nextConfig;
