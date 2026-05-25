@@ -47,12 +47,6 @@ const nougat = localFont({
   display: "swap",
 });
 
-const payback = localFont({
-  src: "../components/fonts/PayBack.ttf",
-  variable: "--font-payback",
-  display: "swap",
-});
-
 const leaguespartan = localFont({
   src: "../components/fonts/LeagueSpartan.ttf",
   variable: "--font-leaguespartan",
@@ -71,7 +65,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://images.weserv.nl" />
       </head>
       <body
-        className={`${nougat.variable} ${payback.variable} ${leaguespartan.variable} font-leaguespartan antialiased bg-background text-foreground`}
+        className={`${nougat.variable} ${leaguespartan.variable} font-leaguespartan antialiased bg-background text-foreground`}
       >
         <Navbar />
         <main className="mx-auto flex-1 px-5 pb-10">

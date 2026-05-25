@@ -1,15 +1,14 @@
 "use client";
 
 import { AnimatePresence } from "framer-motion";
-import dynamic from "next/dynamic";
-import Hero from "@/app/(home)/_components/Hero";
-import Footer from "@/components/Footer";
 import { MotionMain } from "@/components/Framer";
+import dynamic from "next/dynamic";
+import Footer from "@/components/Footer";
 import { SITE_CONTENT } from "@/lib/constants";
 
+const Hero = dynamic(() => import("@/app/(home)/_components/Hero"));
 const Skills = dynamic(() => import("@/app/(home)/_components/Skills"));
-const Experience = dynamic(() => import("@/app/(home)/_components/Experience"));
-const Education = dynamic(() => import("@/app/(home)/_components/Education"));
+const ExperienceTabs = dynamic(() => import("@/app/(home)/_components/ExperienceTabs"));
 const Projects = dynamic(() =>
   import("@/app/(home)/_components/Projects").then((m) => m.Projects),
 );
@@ -34,8 +33,10 @@ export default function Home() {
       >
         <Hero {...SITE_CONTENT.hero} />
         <Skills skills={sanitizedSkills} />
-        <Experience experiences={SITE_CONTENT.experience} />
-        <Education education={SITE_CONTENT.education} />
+        <ExperienceTabs
+          experiences={SITE_CONTENT.experience}
+          education={SITE_CONTENT.education}
+        />
         <Projects projects={SITE_CONTENT.projects} />
         <Footer />
       </MotionMain>

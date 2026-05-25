@@ -35,7 +35,7 @@ export default function Hero({ name, image, summary, currentWork, stats }: HeroP
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className="block font-payback"
+                    className="block"
                   >
                     {firstName}
                   </MotionSpan>
@@ -45,7 +45,7 @@ export default function Hero({ name, image, summary, currentWork, stats }: HeroP
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className="block font-payback text-foreground mt-5 md:ml-60"
+                    className="block text-foreground mt-5 md:ml-60"
                   >
                     {lastName}
                   </MotionSpan>

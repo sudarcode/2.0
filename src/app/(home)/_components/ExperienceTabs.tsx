@@ -7,14 +7,15 @@ import Link from "next/link";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { MotionDiv, MotionLi } from "@/components/Framer";
-import Section from "@/components/Section";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
-import { ExperiencePositionItemType, Experience as ExperienceType, iconMap } from "@/types";
+import { ExperiencePositionItemType, Experience as ExperienceType, Education, iconMap } from "@/types";
 
 interface Props {
   experiences: ExperienceType[];
+  education: Education[];
 }
 
 const containerVariants: Variants = {
@@ -34,26 +35,59 @@ const fadeInUp: Variants = {
   },
 };
 
-export default function Experience({ experiences, className }: Props & { className?: string }) {
+export default function ExperienceTabs({ experiences, education }: Props) {
   return (
     <MotionDiv
-      className={cn("w-full", className)}
       variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: [0.42, 0, 0.58, 1] }}
+      className="w-full"
     >
-      <Section
-        text="Work Experience"
-        href="experience"
-        paragraph="A summary of my professional experience, focusing on real-world projects, collaborative development, and the practical application of modern technologies to deliver reliable and scalable solutions."
-      >
-        {experiences.map((experience) => (
-          <MotionDiv key={experience.id} viewport={{ once: true }} variants={fadeInUp}>
-            <ExperienceItem experience={experience} />
-          </MotionDiv>
-        ))}
-      </Section>
+      <Tabs defaultValue="work" className="w-full">
+        <TabsList className="mb-6">
+          <TabsTrigger value="work">Work</TabsTrigger>
+          <TabsTrigger value="education">Education</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="work">
+          {experiences.map((experience) => (
+            <MotionDiv key={experience.id} variants={fadeInUp}>
+              <ExperienceItem experience={experience} />
+            </MotionDiv>
+          ))}
+        </TabsContent>
+
+        <TabsContent value="education">
+          {education.map(({ name, position, start, end, link, logo }) => (
+            <MotionDiv
+              key={name}
+              variants={fadeInUp}
+              className="mb-10 last:mb-0"
+            >
+              <div className="mb-1.5 flex items-center gap-3">
+                <Link href={link} target="_blank" rel="noopener noreferrer">
+                  <Image
+                    src={`https://images.weserv.nl/?url=${logo}&output=webp`}
+                    alt={name}
+                    width={50}
+                    height={50}
+                    className="rounded-full"
+                  />
+                </Link>
+                <h3 className="text-lg font-semibold text-muted-foreground">{name}</h3>
+              </div>
+
+              <div className="flex flex-col items-start">
+                <span className="text-lg">{position}</span>
+                <span className="text-sm">
+                  {start} — {end}
+                </span>
+              </div>
+            </MotionDiv>
+          ))}
+        </TabsContent>
+      </Tabs>
     </MotionDiv>
   );
 }
@@ -78,9 +112,7 @@ function ExperienceItem({ experience }: { experience: ExperienceType }) {
           </div>
         </Link>
 
-        <h3 className="text-lg font-semibold text-muted-foreground group-data-[state=open]/experience:text-primary">
-          {experience.companyName}
-        </h3>
+        <h3 className="text-lg font-semibold text-muted-foreground">{experience.companyName}</h3>
 
         {experience.isCurrentEmployer && (
           <span className="relative flex items-center justify-center">
@@ -93,7 +125,7 @@ function ExperienceItem({ experience }: { experience: ExperienceType }) {
 
       <div className="relative space-y-4 before:absolute before:left-4 before:h-full before:w-px before:bg-border">
         {experience.positions.map((position) => (
-          <MotionDiv key={position.id} variants={fadeInUp} viewport={{ once: true }}>
+          <MotionDiv key={position.id} variants={fadeInUp}>
             <ExperiencePositionItem position={position} />
           </MotionDiv>
         ))}
@@ -114,7 +146,7 @@ function ExperiencePositionItem({ position }: { position: ExperiencePositionItem
               className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted group-data-[state=open]/experience:bg-primary"
               aria-hidden
             >
-              <ExperienceIcon className="size-4 text-black" />
+              {ExperienceIcon && <ExperienceIcon className="size-4 text-black" />}
             </div>
 
             <span className="flex-1 text-lg text-balance group-data-[state=open]/experience:text-popover-foreground">
@@ -182,8 +214,7 @@ function ExperiencePositionItem({ position }: { position: ExperiencePositionItem
                   key={index}
                   className="list-none"
                   initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
                   <Skill>{skill}</Skill>
