@@ -44,13 +44,13 @@ export default function ExperienceTabs({ experiences, education }: Props) {
       transition={{ duration: 0.4, ease: [0.42, 0, 0.58, 1] }}
       className="w-full"
     >
-      <Tabs defaultValue="work" className="w-full">
-        <TabsList className="mb-6">
-          <TabsTrigger value="work">Work</TabsTrigger>
-          <TabsTrigger value="education">Education</TabsTrigger>
+      <Tabs defaultValue="experience" className="">
+        <TabsList className="mb-6" shape="pill">
+          <TabsTrigger value="experience"className="font-nougat text-4xl md:text-5xl">Experience</TabsTrigger>
+          <TabsTrigger value="education"className="font-nougat text-4xl md:text-5xl">Education</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="work">
+        <TabsContent value="experience">
           {experiences.map((experience) => (
             <MotionDiv key={experience.id} variants={fadeInUp}>
               <ExperienceItem experience={experience} />
