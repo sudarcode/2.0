@@ -46,8 +46,8 @@ export default function ExperienceTabs({ experiences, education }: Props) {
     >
       <Tabs defaultValue="experience" className="">
         <TabsList className="mb-6" shape="pill">
-          <TabsTrigger value="experience"className="font-nougat text-4xl md:text-5xl">Experience</TabsTrigger>
-          <TabsTrigger value="education"className="font-nougat text-4xl md:text-5xl">Education</TabsTrigger>
+          <TabsTrigger value="experience"className="font-nougat text-3xl md:text-5xl">Experience</TabsTrigger>
+          <TabsTrigger value="education"className="font-nougat text-3xl md:text-5xl">Education</TabsTrigger>
         </TabsList>
 
         <TabsContent value="experience">
