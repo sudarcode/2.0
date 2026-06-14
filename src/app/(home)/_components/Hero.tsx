@@ -22,9 +22,9 @@ export default function Hero({ name, image, summary, currentWork, stats }: HeroP
             </div>
             <div className="flex flex-col text-right">
               <span className="text-[10px] uppercase tracking-[0.2em] text-secondary/60">
-                From Kottayam, Kerala
+                Jakarta, Indonesia
               </span>
-              <Clock timezone="Asia/Kolkata" />
+              <Clock timezone="Asia/Jakarta" />
             </div>
           </div>
           <div className="flex-1 flex flex-col justify-center px-8 md:px-16 py-12">
